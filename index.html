@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Trạm Phát Hạnh Phúc 20/10 🌸</title>
+
+  <!-- Google Fonts (Đầy đủ tiếng Việt & Chữ ký nghệ thuật) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Be Vietnam Pro"', 'sans-serif'],
+            serif: ['"Playfair Display"', 'serif'],
+            mono: ['"Space Mono"', 'monospace'],
+            script: ['"Dancing Script"', 'cursive'],
+          },
+          colors: {
+            roseGold: '#B76E79',
+            softCream: '#FFFDF9',
+            blush: '#FCEEF2',
+            deepRose: '#882D42',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Thư viện Pháo giấy & Chụp ảnh vé -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+  <style>
+    body {
+      background: radial-gradient(circle at 20% 10%, #FFE3EC 0%, #FFF9F5 45%, #F9DCE5 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Quả cầu ánh sáng nền chuyển động (Aurora Orbs) */
+    .aurora-orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(65px);
+      z-index: 0;
+      pointer-events: none;
+      animation: floatOrb 12s ease-in-out infinite alternate;
+    }
+    @keyframes floatOrb {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(30px, -25px) scale(1.12); }
+      100% { transform: translate(-20px, 20px) scale(0.95); }
+    }
+
+    /* Hiệu ứng cánh hoa rơi 3D */
+    .petal {
+      position: fixed;
+      top: -10%;
+      background: linear-gradient(135deg, #ffc2d1, #ff8fab);
+      border-radius: 150% 0 150% 0;
+      box-shadow: 0 2px 6px rgba(255, 143, 171, 0.25);
+      pointer-events: none;
+      z-index: 1;
+      animation: fall linear infinite;
+    }
+    @keyframes fall {
+      0% { transform: translateY(0vh) rotate(0deg) rotateX(0deg) translateX(0px); opacity: 0.75; }
+      50% { transform: translateY(50vh) rotate(180deg) rotateX(180deg) translateX(28px); opacity: 0.6; }
+      100% { transform: translateY(112vh) rotate(360deg) rotateX(360deg) translateX(-28px); opacity: 0; }
+    }
+
+    /* Hiệu ứng vệt sáng quét qua nút bấm (Shimmer) */
+    .btn-shimmer {
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-shimmer::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -120%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.45), transparent);
+      transform: skewX(-20deg);
+      animation: shimmerSweep 3.2s infinite;
+    }
+    @keyframes shimmerSweep {
+      0% { left: -120%; }
+      50%, 100% { left: 160%; }
+    }
+
+    /* Sóng tần số trong máy in */
+    .wave-bar {
+      width: 3px;
+      background: #ff8fab;
+      border-radius: 999px;
+      animation: wavePulse 1.2s ease-in-out infinite;
+    }
+    @keyframes wavePulse {
+      0%, 100% { height: 6px; opacity: 0.4; }
+      50% { height: 20px; opacity: 1; }
+    }
+
+    /* Hiệu ứng giấy trượt ra từ khe máy in */
+    @keyframes ticketPrintOut {
+      0% { transform: translateY(-105%); opacity: 0.3; }
+      25% { transform: translateY(-75%); opacity: 1; }
+      50% { transform: translateY(-45%); }
+      75% { transform: translateY(-18%); }
+      100% { transform: translateY(0%); opacity: 1; }
+    }
+    .animate-ticket-print {
+      animation: ticketPrintOut 2.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    /* Hiệu ứng xuất hiện mượt mà */
+    @keyframes fadeUpScale {
+      0% { opacity: 0; transform: translateY(20px) scale(0.96); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .animate-fade-up {
+      animation: fadeUpScale 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    /* Khe máy in 3D */
+    .printer-slot {
+      height: 16px;
+      background: linear-gradient(to bottom, #241016, #5c2c38);
+      border-radius: 999px;
+      box-shadow: inset 0 5px 8px rgba(0,0,0,0.75), 0 2px 4px rgba(255,255,255,0.9);
+      position: relative;
+    }
+    .printer-slot::after {
+      content: '';
+      position: absolute;
+      inset: 3px 12px;
+      height: 2px;
+      background: rgba(255, 182, 193, 0.25);
+      border-radius: 999px;
+    }
+
+    /* Tấm vé & Đường cắt (Ticket Card & Notch) */
+    .ticket-card {
+      position: relative;
+      background: linear-gradient(180deg, #FFFDFB 0%, #FFF9FA 60%, #FFF3F6 100%);
+      border: 1.5px solid #F1C8D4;
+      transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+      transform-style: preserve-3d;
+    }
+
+    /* Họa tiết răng cưa đầu tấm vé */
+    .ticket-top-edge {
+      background-image: radial-gradient(circle at 10px -2px, transparent 8px, #FFFDFB 9px);
+      background-size: 20px 14px;
+      height: 10px;
+      width: 100%;
+    }
+
+    .ticket-divider {
+      position: relative;
+      border-top: 2px dashed #E5B0C0;
+      margin: 1.25rem 0;
+    }
+    .ticket-divider::before,
+    .ticket-divider::after {
+      content: '';
+      position: absolute;
+      top: -14px;
+      width: 26px;
+      height: 26px;
+      background-color: #FCE8EE;
+      border-radius: 9999px;
+      border: 1.5px solid #F1C8D4;
+      box-shadow: inset 0 2px 4px rgba(183, 110, 121, 0.12);
+    }
+    .ticket-divider::before { left: -38px; }
+    .ticket-divider::after { right: -38px; }
+
+    /* Con dấu sáp (Wax Seal Stamp) */
+    .wax-seal {
+      background: radial-gradient(circle at 30% 30%, #e05772, #9e2a40 70%, #73192a 100%);
+      box-shadow: 0 4px 10px rgba(158, 42, 64, 0.35), inset 0 2px 4px rgba(255,255,255,0.35);
+    }
+
+    /* Mã vạch CSS */
+    .barcode {
+      height: 40px;
+      width: 100%;
+      background: repeating-linear-gradient(
+        to right,
+        #3D1E24 0px, #3D1E24 2px,
+        transparent 2px, transparent 5px,
+        #3D1E24 5px, #3D1E24 6px,
+        transparent 6px, transparent 9px,
+        #3D1E24 9px, #3D1E24 13px,
+        transparent 13px, transparent 16px,
+        #3D1E24 16px, #3D1E24 18px,
+        transparent 18px, transparent 22px,
+        #3D1E24 22px, #3D1E24 26px,
+        transparent 26px, transparent 29px
+      );
+    }
+  </style>
+</head>
+<body class="font-sans text-stone-800 flex flex-col items-center justify-center p-4 min-h-screen relative selection:bg-pink-200">
+
+  <!-- Các quả cầu ánh sáng nền -->
+  <div class="aurora-orb w-72 h-72 bg-pink-300/40 top-[-5%] left-[-10%]"></div>
+  <div class="aurora-orb w-80 h-80 bg-rose-300/35 bottom-[-5%] right-[-10%]" style="animation-delay: -5s;"></div>
+
+  <!-- Container cánh hoa rơi -->
+  <div id="petals-container"></div>
+
+  <!-- Thanh trạng thái nổi phía trên -->
+  <header class="w-full max-w-md z-20 flex items-center justify-between mb-3 px-1">
+    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/70 backdrop-blur-md border border-pink-200/80 shadow-sm text-[11px] font-medium text-deepRose">
+      <span class="w-2 h-2 rounded-full bg-rose-500 animate-ping"></span>
+      <span>Trạm 20/10 Đang Hoạt Động</span>
+    </div>
+    <button id="btn-sound-toggle" title="Bật/Tắt âm thanh hiệu ứng" class="px-3 py-1.5 rounded-full bg-white/70 backdrop-blur-md border border-pink-200/80 shadow-sm text-xs text-deepRose hover:bg-white transition flex items-center gap-1.5">
+      <span id="sound-icon">🔊</span>
+      <span class="text-[11px] font-medium">Âm thanh</span>
+    </button>
+  </header>
+
+  <!-- MODAL CẢNH BÁO TRÌNH DUYỆT ẨN (ZALO / MESSENGER / FB) -->
+  <div id="inapp-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-sm w-full p-6 text-center shadow-2xl border border-pink-100 animate-fade-up">
+      <div class="w-14 h-14 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center mx-auto mb-3 text-2xl">
+        🌸
+      </div>
+      <h3 class="font-serif text-xl font-bold text-deepRose mb-2">Mở bằng Trình duyệt để nhận vé nhé!</h3>
+      <p class="text-xs sm:text-sm text-stone-600 leading-relaxed mb-4">
+        Bạn đang mở link trong ứng dụng <b>Zalo / Messenger</b>. Google sẽ hạn chế đăng nhập trong trình duyệt ẩn này.
+      </p>
+      <div class="bg-pink-50/90 border border-pink-200 rounded-2xl p-3.5 text-left text-xs text-stone-700 space-y-2 mb-5">
+        <p>👉 <b>Bước 1:</b> Nhấn vào biểu tượng <b>3 chấm (•••)</b> ở góc trên/dưới màn hình.</p>
+        <p>👉 <b>Bước 2:</b> Chọn <b>"Mở bằng trình duyệt"</b> (Safari hoặc Chrome).</p>
+      </div>
+      <button id="btn-close-inapp" class="w-full py-3 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-600 text-xs font-semibold transition">
+        Tôi vẫn muốn thử tiếp tục tại đây
+      </button>
+    </div>
+  </div>
+
+  <!-- MODAL NHẬP TÊN CHẾ ĐỘ DEMO -->
+  <div id="demo-modal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl border border-pink-100 animate-fade-up">
+      <div class="flex items-center justify-between mb-2">
+        <h3 class="font-serif text-xl font-bold text-deepRose">Chế độ In Vé Thử</h3>
+        <span class="text-xs bg-pink-100 text-deepRose px-2.5 py-0.5 rounded-full font-semibold">Demo</span>
+      </div>
+      <p class="text-xs text-stone-500 mb-4">Nhập tên của bạn để xem máy in vé 20/10 hoạt động như thế nào nhé:</p>
+      <input id="demo-name-input" type="text" placeholder="Nhập tên của bạn..." value="Bạn Nữ Xinh Đẹp"
+        class="w-full px-4 py-3 rounded-xl border border-pink-200 focus:outline-none focus:ring-2 focus:ring-pink-400 text-sm mb-4 font-medium text-stone-800" />
+      <div class="flex gap-2.5">
+        <button id="btn-cancel-demo" class="flex-1 py-2.5 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-600 text-xs font-semibold transition">Đóng</button>
+        <button id="btn-confirm-demo" class="flex-1 py-2.5 rounded-xl bg-gradient-to-r from-[#d46a7e] to-[#b0485d] text-white text-xs font-semibold shadow-md hover:opacity-95 transition">✨ In Vé Ngay</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN WRAPPER -->
+  <main class="w-full max-w-md z-10 my-auto">
+
+    <!-- ==========================================
+         MÀN HÌNH 1: QUẦY CHECK-IN TRẠM HẠNH PHÚC
+         ========================================== -->
+    <section id="screen-checkin" class="bg-white/85 backdrop-blur-xl rounded-[34px] p-6 sm:p-8 shadow-[0_24px_60px_rgba(183,110,121,0.22)] border border-white text-center relative overflow-hidden animate-fade-up">
+      <!-- Hoạ tiết trang trí góc -->
+      <div class="absolute -top-10 -right-10 w-28 h-28 bg-gradient-to-br from-pink-200/40 to-rose-300/20 rounded-full blur-xl pointer-events-none"></div>
+
+      <!-- Decor top badge -->
+      <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-gradient-to-r from-pink-100 to-rose-100 border border-pink-200/80 text-deepRose text-[11px] font-bold tracking-wider mb-4 shadow-sm">
+        <span>✨ SPECIAL EDITION • 20.10 ✨</span>
+      </div>
+
+      <h1 class="font-serif text-3xl sm:text-4xl font-bold text-deepRose leading-tight mb-2">
+        Trạm Phát<br/>Hạnh Phúc
+      </h1>
+      <p class="text-xs sm:text-sm text-stone-500 max-w-xs mx-auto mb-6 leading-relaxed">
+      Chạm để in tấm vé kỷ niệm 20/10 mang tên bạn!
+      </p>
+
+      <!-- Mô hình Máy In Vé Tương Tác -->
+      <div class="bg-gradient-to-b from-[#FFF5F8] to-[#FCE4EC]/80 rounded-2xl p-5 border border-pink-200/90 shadow-inner mb-6 relative">
+        <div class="flex items-center justify-between text-[11px] font-mono text-roseGold mb-2.5 px-1">
+          <span class="flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+            STATUS: READY
+          </span>
+          <span>BOOTH #2010</span>
+        </div>
+
+        <!-- Khe máy in 3D -->
+        <div class="printer-slot w-full mb-3.5"></div>
+
+        <!-- Màn hình LED cảm biến tần số -->
+        <div class="bg-[#28151B] text-pink-200 font-mono text-xs py-3.5 px-4 rounded-xl border border-rose-900/50 shadow-inner flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+            <span class="tracking-wide text-[11px] sm:text-xs">CHỜ QUÉT DANH TÍNH...</span>
+          </div>
+          <!-- Sóng tần số động -->
+          <div class="flex items-center gap-1 h-5">
+            <div class="wave-bar" style="animation-delay: 0s;"></div>
+            <div class="wave-bar" style="animation-delay: 0.2s;"></div>
+            <div class="wave-bar" style="animation-delay: 0.4s;"></div>
+            <div class="wave-bar" style="animation-delay: 0.1s;"></div>
+            <div class="wave-bar" style="animation-delay: 0.3s;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Nút bấm chính: Đăng nhập Google -->
+      <button id="btn-google-login" class="btn-shimmer w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-[#d46a7e] via-[#c85a70] to-[#a83e53] hover:opacity-95 active:scale-[0.98] text-white font-semibold text-sm sm:text-base shadow-[0_12px_28px_rgba(200,90,112,0.38)] transition-all flex items-center justify-center gap-3 group">
+        <div class="bg-white p-1.5 rounded-full shadow-sm group-hover:rotate-12 transition-transform">
+          <svg class="w-4 h-4" viewBox="0 0 24 24">
+            <path fill="#EA4335" d="M12 5c1.6 0 3 .6 4.1 1.7l3.1-3.1C17.3 1.8 14.8 1 12 1 7.4 1 3.5 3.6 1.6 7.4l3.7 2.8C6.2 7.2 8.9 5 12 5z"/>
+            <path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.5h6.5c-.3 1.5-1.1 2.8-2.4 3.6l3.7 2.9c2.2-2 3.7-5 3.7-8.7z"/>
+            <path fill="#FBBC05" d="M5.3 14.8c-.2-.8-.4-1.6-.4-2.5s.2-1.7.4-2.5L1.6 7C.6 9 0 11.2 0 13.5s.6 4.5 1.6 6.5l3.7-2.9z"/>
+            <path fill="#34A853" d="M12 24c3.2 0 6-1.1 8-3l-3.7-2.9c-1.1.7-2.5 1.2-4.3 1.2-3.1 0-5.8-2.1-6.7-5l-3.7 2.8C3.5 21.4 7.4 24 12 24z"/>
+          </svg>
+        </div>
+        <span>🌸 Chạm để In Vé bằng Google</span>
+      </button>
+
+      <!-- Thông báo lỗi nếu có -->
+      <div id="error-message" class="mt-3 p-3 rounded-xl bg-red-50 border border-red-200 text-xs text-red-600 hidden text-left leading-relaxed"></div>
+
+      <!-- Nút chạy thử Demo Mode -->
+      <div class="mt-5 pt-4 border-t border-pink-100/80 flex items-center justify-center">
+        <button id="btn-open-demo" class="text-xs text-stone-400 hover:text-deepRose underline underline-offset-4 transition">
+          Chưa gắn Firebase? Bấm xem thử hiệu ứng in vé (Demo)
+        </button>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         MÀN HÌNH 2: HIỆU ỨNG MÁY ĐANG IN VÉ
+         ========================================== -->
+    <section id="screen-printing" class="hidden bg-white/90 backdrop-blur-xl rounded-[34px] p-6 sm:p-8 shadow-[0_24px_60px_rgba(183,110,121,0.22)] border border-white text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-700 text-xs font-mono mb-3">
+        <span class="w-2 h-2 rounded-full bg-amber-500 animate-ping"></span>
+        <span>PRINTING IN PROGRESS...</span>
+      </div>
+
+      <h2 id="printing-status-text" class="font-serif text-xl sm:text-2xl font-bold text-deepRose mb-2">
+        Đang trích xuất tần số dịu dàng...
+      </h2>
+      <p id="printing-subtext" class="text-xs text-stone-500 mb-5">
+        Vui lòng đợi trong giây lát để máy đóng dấu sáp 20/10
+      </p>
+
+      <!-- Thanh tiến trình % -->
+      <div class="w-full bg-pink-100 h-2 rounded-full overflow-hidden mb-5">
+        <div id="printing-progress" class="bg-gradient-to-r from-pink-400 to-deepRose h-full w-0 transition-all duration-300"></div>
+      </div>
+
+      <!-- Khe máy in + Tờ vé đang trượt ra -->
+      <div class="bg-pink-50/70 rounded-2xl p-4 border border-pink-200/80">
+        <div class="printer-slot w-full z-20"></div>
+        <!-- Vùng cắt hiệu ứng tờ giấy trượt từ khe -->
+        <div class="overflow-hidden pt-1 px-2 pb-2">
+          <div id="printing-paper" class="bg-softCream border border-pink-200 rounded-b-2xl p-5 shadow-md text-center">
+            <div class="text-[10px] font-mono text-roseGold tracking-widest mb-2">VIETNAMESE WOMEN'S DAY • 20.10</div>
+            <div class="w-12 h-12 rounded-full bg-pink-100 mx-auto mb-2 animate-pulse"></div>
+            <div class="h-3 w-32 bg-pink-100 rounded mx-auto mb-2 animate-pulse"></div>
+            <div class="h-2 w-48 bg-pink-50 rounded mx-auto mb-3 animate-pulse"></div>
+            <div class="border-t border-dashed border-pink-200 my-3"></div>
+            <div class="barcode opacity-40"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         MÀN HÌNH 3: TẤM VÉ HẠNH PHÚC CÁ NHÂN HÓA
+         ========================================== -->
+    <section id="screen-ticket" class="hidden animate-fade-up">
+
+      <!-- VÙNG CHỤP ẢNH VÉ (HTML2CANVAS) -->
+      <div id="ticket-capture-area" class="p-2 sm:p-3 rounded-[30px]" style="background: linear-gradient(145deg, #FCEEF2 0%, #FFF8F6 50%, #F9DCE5 100%);">
+        <div id="interactive-ticket" class="ticket-card rounded-[24px] p-6 sm:p-7 shadow-[0_20px_50px_rgba(142,58,73,0.18)] overflow-hidden">
+
+          <!-- Watermark chữ 20/10 chìm phía sau -->
+          <div class="absolute top-16 -right-6 font-serif text-7xl font-bold text-pink-500/[0.04] select-none pointer-events-none rotate-12">
+            20.10
+          </div>
+
+          <!-- HEADER VÉ -->
+          <div class="flex items-center justify-between border-b border-pink-100 pb-3.5 mb-5">
+            <div class="text-left">
+              <p class="text-[10px] font-mono uppercase tracking-widest text-roseGold font-bold">
+                🌸 VIETNAMESE WOMEN'S DAY
+              </p>
+              <p class="text-xs font-serif font-bold text-deepRose">
+                Vé Đặc Quyền Hạnh Phúc • 20/10
+              </p>
+            </div>
+            <div class="text-right">
+              <span id="ticket-code" class="inline-block px-2.5 py-1 rounded-lg bg-pink-100/80 border border-pink-200 font-mono text-[11px] font-bold text-deepRose">
+                #HP2010-8888
+              </span>
+            </div>
+          </div>
+
+          <!-- BODY VÉ: AVATAR & TÊN NGƯỜI NHẬN -->
+          <div class="flex flex-col items-center text-center mb-4 relative">
+            <div class="relative mb-3">
+              <!-- Vòng tròn viền kép Rose Gold -->
+              <div class="w-20 h-20 rounded-full p-1 bg-gradient-to-tr from-[#d46a7e] via-[#f3c6cf] to-[#b76e79] shadow-md">
+                <img id="ticket-avatar" crossorigin="anonymous" src="" alt="Avatar"
+                  class="w-full h-full rounded-full object-cover border-2 border-white bg-pink-50" />
+              </div>
+              <!-- Vương miện / Hoa góc avatar -->
+              <span class="absolute -top-1.5 -right-1.5 w-7 h-7 rounded-full bg-white shadow border border-pink-100 flex items-center justify-center text-sm">
+                👑
+              </span>
+            </div>
+
+            <p class="text-[11px] uppercase tracking-widest text-stone-400 font-semibold mb-0.5">
+              Hành khách đặc biệt
+            </p>
+            <h2 id="ticket-name" class="font-serif text-2xl sm:text-3xl font-bold text-deepRose leading-snug px-2">
+              Nguyễn Hà Châu
+            </h2>
+            <p id="ticket-email" class="text-[11px] font-mono text-stone-400 mt-0.5">
+              hachau@gmail.com
+            </p>
+
+            <!-- Danh hiệu 20/10 (Badge) -->
+            <div class="mt-3 inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-gradient-to-r from-[#882D42] to-[#B76E79] text-white text-xs font-semibold shadow-sm">
+              <span>✨ Danh hiệu:</span>
+              <span id="ticket-title" class="font-bold">Nàng Thơ Dịu Dàng</span>
+            </div>
+          </div>
+
+          <!-- BẢNG CHỈ SỐ ĐẶC QUYỀN 20/10 -->
+          <div class="grid grid-cols-2 gap-2.5 my-4">
+            <div class="bg-pink-50/70 border border-pink-100 rounded-xl p-2.5 text-center">
+              <p class="text-[10px] text-stone-400 uppercase font-semibold">Loài hoa đại diện</p>
+              <p id="ticket-flower" class="text-xs font-bold text-deepRose mt-0.5">🌷 Hoa Tulip Hồng</p>
+            </div>
+            <div class="bg-pink-50/70 border border-pink-100 rounded-xl p-2.5 text-center">
+              <p class="text-[10px] text-stone-400 uppercase font-semibold">Chỉ số rạng rỡ</p>
+              <p id="ticket-aura" class="text-xs font-bold text-deepRose mt-0.5">1000% Tỏa Sáng ✨</p>
+            </div>
+          </div>
+
+          <!-- HỘP LỜI CHÚC Ý NGHĨA -->
+          <div class="bg-gradient-to-br from-[#FFF9FB] to-[#FCEEF2]/70 border border-pink-200/80 rounded-2xl p-4 sm:p-5 relative my-2 shadow-inner">
+            <span class="font-serif text-4xl text-pink-300/70 absolute top-1 left-3 leading-none select-none">“</span>
+            <p id="ticket-wish" class="text-xs sm:text-sm text-stone-700 leading-relaxed text-center relative z-10 pt-2 pb-1 italic">
+              Lời chúc 20/10 sẽ hiển thị tại đây...
+            </p>
+            <div class="mt-3 flex items-center justify-between pt-2 border-t border-pink-200/50">
+              <span class="text-[10px] font-mono text-roseGold">FROM: D26 AIoTers</span>
+              <span class="font-script text-base text-deepRose">Happy Women's Day ♡</span>
+            </div>
+          </div>
+
+          <!-- ĐƯỜNG RÃNH XÉ VÉ (TICKET NOTCH) -->
+          <div class="ticket-divider"></div>
+
+          <!-- FOOTER VÉ (CUỐNG VÉ + CON DẤU SÁP + MÃ VẠCH) -->
+          <div class="flex items-center justify-between text-xs mb-3">
+            <div class="text-left">
+              <p class="text-[10px] font-mono text-stone-400">ĐIỂM KHỞI HÀNH</p>
+              <p class="font-bold text-stone-700">Sinh Viên PTIT</p>
+            </div>
+            <div class="text-roseGold font-mono text-base px-2">⎯⎯ ✈️ ⎯⎯</div>
+            <div class="text-right">
+              <p class="text-[10px] font-mono text-stone-400">ĐIỂM ĐẾN</p>
+              <p class="font-bold text-deepRose">Tổng Tài Nghìn Tỷ</p>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between bg-stone-50/90 rounded-xl px-3 py-2 border border-stone-200/60 text-[11px] font-mono text-stone-500 mb-4">
+            <span>🕒 <span id="ticket-time">20/10/2026 - 08:30</span></span>
+            <span class="text-deepRose font-bold">HẠNG VÉ: V.I.P TRỌN ĐỜI</span>
+          </div>
+
+          <!-- Mã vạch + Con dấu sáp -->
+          <div class="relative pt-1">
+            <div class="barcode opacity-85 rounded"></div>
+            <p class="text-[10px] font-mono text-center text-stone-400 tracking-[0.25em] mt-1.5">
+              * VÉ CÓ GIÁ TRỊ HẠNH PHÚC VÔ THỜI HẠN *
+            </p>
+
+            <!-- Con dấu sáp đóng góc phải -->
+            <div class="wax-seal w-14 h-14 rounded-full flex flex-col items-center justify-center text-white absolute -top-5 right-1 rotate-[-12deg] border-2 border-rose-200/40 select-none">
+              <span class="text-[8px] font-mono tracking-tighter opacity-90">CERTIFIED</span>
+              <span class="font-serif text-xs font-bold leading-none my-0.5">20.10</span>
+              <span class="text-[7px] font-mono tracking-tighter opacity-90">LOVELY</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- CÁC NÚT TƯƠNG TÁC BÊN DƯỚI VÉ -->
+      <div class="mt-4 space-y-2.5 px-1">
+        <div class="flex gap-2.5">
+          <button id="btn-download-ticket" class="btn-shimmer flex-1 py-3.5 px-4 rounded-2xl bg-gradient-to-r from-[#d46a7e] to-[#a83e53] text-white font-semibold text-xs sm:text-sm shadow-lg hover:opacity-95 active:scale-[0.98] transition flex items-center justify-center gap-2">
+            <span>📸 Lưu Vé Về Máy (HD)</span>
+          </button>
+          <button id="btn-confetti-again" title="Bắn pháo hoa" class="py-3.5 px-4 rounded-2xl bg-white border border-pink-200 text-deepRose font-semibold text-sm shadow-sm hover:bg-pink-50 active:scale-95 transition">
+            🎉
+          </button>
+        </div>
+
+        <button id="btn-switch-account" class="w-full py-3 rounded-2xl bg-white/80 hover:bg-white text-stone-600 font-medium text-xs border border-pink-100 shadow-sm transition flex items-center justify-center gap-1.5">
+          <span>🔄 Đổi tài khoản Google khác</span>
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="z-10 text-center text-[11px] text-stone-400 mt-4 pb-2">
+    Made with 💖 for Vietnamese Women's Day 20/10
+  </footer>
+
+  <!-- ==========================================
+       JAVASCRIPT & FIREBASE AUTHENTICATION
+       ========================================== -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
+    import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js";
+
+    // =========================================================================
+    // 👉 BƯỚC QUAN TRỌNG: DÁN FIREBASE CONFIG CỦA BẠN VÀO ĐÂY
+    // =========================================================================
+    const firebaseConfig = {
+  	apiKey: "AIzaSyCL-khNrlC-Zl1kKQzqUmzUt321rwARDbU",
+  	authDomain: "ptit-98cc2.firebaseapp.com",
+  	projectId: "ptit-98cc2",
+  	storageBucket: "ptit-98cc2.firebasestorage.app",
+  	messagingSenderId: "64152584793",
+  	appId: "1:64152584793:web:f433c816e260e89249e748",
+  	measurementId: "G-1S87HKCX1J"
+	};
+    let auth = null;
+    let provider = null;
+    const isFirebaseConfigured = firebaseConfig.apiKey && !firebaseConfig.apiKey.includes("PASTE_YOUR");
+
+    if (isFirebaseConfigured) {
+      try {
+        const app = initializeApp(firebaseConfig);
+        auth = getAuth(app);
+        provider = new GoogleAuthProvider();
+        provider.setCustomParameters({ prompt: 'select_account' });
+      } catch (err) {
+        console.error("Lỗi khởi tạo Firebase:", err);
+      }
+    }
+
+    // =========================================================================
+    // KHO 16 DANH HIỆU, LOÀI HOA & LỜI CHÚC 20/10 ĐA DẠNG
+    // =========================================================================
+    const WISH_COLLECTION = [
+      {
+        title: "Nữ Hoàng Năng Lượng Tích Cực",
+        flower: "🌻 Hoa Hướng Dương",
+        aura: "1000% Rạng Rỡ ✨",
+        wish: "Chúc {name} một ngày 20/10 rực rỡ như ánh mặt trời! Cảm ơn bạn vì luôn mang đến nguồn năng lượng ấm áp, nụ cười tươi tắn và truyền cảm hứng tích cực cho mọi người xung quanh."
+      },
+      {
+        title: "Nàng Thơ Dịu Dàng",
+        flower: "🌷 Hoa Tulip Hồng",
+        aura: "999% Ngọt Ngào 🌸",
+        wish: "Gửi tới {name} ngàn lời chúc dịu dàng nhất nhân ngày 20/10. Chúc bạn luôn giữ được tâm hồn trong trẻo, trái tim ấm áp và mỗi ngày trôi qua đều nhẹ nhàng như một bản nhạc thu."
+      },
+      {
+        title: "Chiến Thần Vượt Mọi Deadline",
+        flower: "🌹 Hoa Hồng Đỏ Kiêu Kỳ",
+        aura: "Max Level Bản Lĩnh 🔥",
+        wish: "Chúc mừng 20/10, {name}! Dù công việc hay học tập có bận rộn đến đâu, chúc bạn luôn giữ vững bản lĩnh, làm chủ mọi mục tiêu và luôn dành thời gian yêu thương, chiều chuộng bản thân mình thật nhiều nhé."
+      },
+      {
+        title: "Bảo Vật Của Vũ Trụ",
+        flower: "🌸 Hoa Anh Đào",
+        aura: "Độc Nhất Vô Nhị 💎",
+        wish: "Vũ trụ nhắn gửi tới {name} rằng: Bạn chính là phiên bản tuyệt vời và đáng trân quý nhất! Chúc bạn ngày 20/10 ngập tràn hoa, quà, những lời yêu thương và vạn điều như ý."
+      },
+      {
+        title: "Đóa Hoa Kiêu Hãnh",
+        flower: "🌺 Hoa Mẫu Đơn",
+        aura: "Khí Chất Ngời Ngời 👑",
+        wish: "Chúc {name} ngày Phụ nữ Việt Nam 20/10 thật trọn vẹn! Hãy luôn tự tin, kiêu hãnh và tỏa hương theo cách riêng của mình. Mọi điều tốt đẹp và may mắn nhất đang chờ đón bạn phía trước."
+      },
+      {
+        title: "Cô Gái Mang Nụ Cười Tỏa Nắng",
+        flower: "🌼 Hoa Cúc Họa Mi",
+        aura: "100% Đáng Yêu 💖",
+        wish: "Nụ cười của {name} chính là món quà đẹp nhất! Ngày 20/10 này, chúc bạn luôn giữ mãi nét duyên dáng, hồn nhiên và mỗi sáng thức dậy đều có thêm thật nhiều lý do để mỉm cười hạnh phúc."
+      },
+      {
+        title: "Nữ Chính Ngôn Tình Đời Thực",
+        flower: "💐 Hoa Baby Trắng",
+        aura: "Ngập Tràn Yêu Thương 💌",
+        wish: "Chúc {name} luôn là 'nữ chính' hạnh phúc nhất trong câu chuyện cuộc đời mình! Ngày 20/10 chúc bạn được bao bọc bởi sự dịu dàng, chở che và những điều lãng mạn ngọt ngào nhất."
+      },
+      {
+        title: "Ngôi Sao Sáng Tạo",
+        flower: "🪻 Hoa Oải Hương (Lavender)",
+        aura: "Tần Số Tinh Tế ✨",
+        wish: "Gửi ngàn lời chúc tốt đẹp đến {name} nhân ngày 20/10! Chúc bạn luôn bay bổng với những ước mơ lớn, gặt hái thật nhiều thành tựu rực rỡ và luôn tự hào về hành trình mình đang đi."
+      },
+      {
+        title: "Đại Sứ Hạnh Phúc",
+        flower: "🪷 Hoa Sen Thanh Khiết",
+        aura: "Bình Yên & Tỏa Sáng 🌿",
+        wish: "Chúc {name} một ngày 20/10 thật bình yên, ấm áp bên những người thân yêu. Mong bạn luôn mạnh khỏe, tâm an nhiên và đi đến đâu cũng gieo mầm niềm vui đến đó."
+      },
+      {
+        title: "Quý Cô Thanh Lịch",
+        flower: "💮 Hoa Trà Trắng (Camellia)",
+        aura: "Sang Trọng & Cuốn Hút ✨",
+        wish: "Nhân ngày 20/10, chúc {name} ngày càng thăng hạng nhan sắc, vẹn tròn niềm vui và luôn giữ được phong thái tự tin, cuốn hút khiến ai gặp một lần cũng nhớ mãi!"
+      },
+      {
+        title: "Nàng Tiên May Mắn",
+        flower: "🍀 Hoa Cát Tường",
+        aura: "Vạn Sự Như Ý 🌈",
+        wish: "Tấm vé này mang theo 1000% may mắn gửi tới {name} trong ngày 20/10! Chúc mọi dự định sắp tới của bạn đều thuận buồm xuôi gió, tình cảm viên mãn và luôn rạng ngời hạnh phúc."
+      },
+      {
+        title: "Trái Tim Ấm Áp",
+        flower: "🌺 Hoa Cẩm Tú Cầu",
+        aura: "Dịu Dàng & Sâu Sắc 💕",
+        wish: "Cảm ơn {name} vì sự tinh tế và ấm áp mà bạn luôn dành cho thế giới này. Chúc bạn ngày 20/10 nhận lại gấp trăm lần sự yêu thương, trân trọng và những bất ngờ ngọt ngào nhất!"
+      }
+    ];
+
+    // =========================================================================
+    // HỆ THỐNG ÂM THANH WEB AUDIO API (KHÔNG CẦN FILE MP3 NGOÀI)
+    // =========================================================================
+    let soundEnabled = true;
+    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+    let audioCtx = null;
+
+    function initAudio() {
+      if (!audioCtx && AudioCtx) audioCtx = new AudioCtx();
+    }
+
+    function playBeep(freq = 600, duration = 0.06, type = 'sine') {
+      if (!soundEnabled) return;
+      try {
+        initAudio();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gain.gain.setValueAtTime(0.06, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+      } catch (e) {}
+    }
+
+    function playSuccessChime() {
+      if (!soundEnabled) return;
+      const notes = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6
+      notes.forEach((note, idx) => {
+        setTimeout(() => playBeep(note, 0.28, 'triangle'), idx * 90);
+      });
+    }
+
+    document.getElementById('btn-sound-toggle').addEventListener('click', () => {
+      soundEnabled = !soundEnabled;
+      document.getElementById('sound-icon').textContent = soundEnabled ? '🔊' : '🔇';
+      if (soundEnabled) playBeep(800, 0.08);
+    });
+
+    // =========================================================================
+    // HIỆU ỨNG CÁNH HOA RƠI NỀN
+    // =========================================================================
+    function createPetals() {
+      const container = document.getElementById('petals-container');
+      const count = 18;
+      for (let i = 0; i < count; i++) {
+        const petal = document.createElement('div');
+        petal.className = 'petal';
+        const size = Math.random() * 10 + 8;
+        petal.style.width = `${size}px`;
+        petal.style.height = `${size * 1.25}px`;
+        petal.style.left = `${Math.random() * 100}vw`;
+        petal.style.animationDuration = `${Math.random() * 6 + 7}s`;
+        petal.style.animationDelay = `${Math.random() * 5}s`;
+        container.appendChild(petal);
+      }
+    }
+    createPetals();
+
+    // =========================================================================
+    // KIỂM TRA TRÌNH DUYỆT ẨN (ZALO / MESSENGER / FB)
+    // =========================================================================
+    function checkInAppBrowser() {
+      const ua = navigator.userAgent || navigator.vendor || window.opera;
+      const isInApp = /Zalo|FBAN|FBAV|Instagram|Messenger|TikTok/i.test(ua);
+      if (isInApp) {
+        const modal = document.getElementById('inapp-modal');
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      }
+    }
+    checkInAppBrowser();
+
+    document.getElementById('btn-close-inapp').addEventListener('click', () => {
+      const modal = document.getElementById('inapp-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    });
+
+    // =========================================================================
+    // LOGIC LƯU TRỮ VÉ THEO EMAIL (SMART RANDOM PERSISTENCE)
+    // =========================================================================
+    function generateTicketHash(str) {
+      let hash = 0;
+      for (let i = 0; i < str.length; i++) {
+        hash = ((hash << 5) - hash) + str.charCodeAt(i);
+        hash |= 0;
+      }
+      const code = Math.abs(hash).toString(16).toUpperCase().padStart(4, '0').slice(0, 4);
+      return `#HP2010-${code}`;
+    }
+
+    function getOrCreateTicketData(user) {
+      const emailKey = (user.email || user.displayName || 'guest').toLowerCase().trim();
+      const storageKey = `ticket_2010_v2_${emailKey}`;
+      const saved = localStorage.getItem(storageKey);
+
+      if (saved) {
+        try {
+          return JSON.parse(saved);
+        } catch (e) {}
+      }
+
+      const randomIndex = Math.floor(Math.random() * WISH_COLLECTION.length);
+      const selected = WISH_COLLECTION[randomIndex];
+      const now = new Date();
+      const pad = (n) => String(n).padStart(2, '0');
+      const timestamp = `${pad(now.getDate())}/${pad(now.getMonth() + 1)}/${now.getFullYear()} • ${pad(now.getHours())}:${pad(now.getMinutes())}`;
+
+      const ticketData = {
+        code: generateTicketHash(emailKey + randomIndex),
+        title: selected.title,
+        flower: selected.flower,
+        aura: selected.aura,
+        wish: selected.wish.replace(/\{name\}/g, user.displayName || 'Bạn'),
+        timestamp: timestamp
+      };
+
+      localStorage.setItem(storageKey, JSON.stringify(ticketData));
+      return ticketData;
+    }
+
+    // =========================================================================
+    // HIỆU ỨNG IN VÉ & HIỂN THỊ TẤM VÉ
+    // =========================================================================
+    const screenCheckin = document.getElementById('screen-checkin');
+    const screenPrinting = document.getElementById('screen-printing');
+    const screenTicket = document.getElementById('screen-ticket');
+
+    function fireCelebrationConfetti() {
+      confetti({
+        particleCount: 70,
+        spread: 75,
+        origin: { y: 0.6 },
+        colors: ['#ff8fab', '#fb6f92', '#ffe5ec', '#d46a7e', '#ffd166']
+      });
+    }
+
+    function startPrintingFlow(user) {
+      const displayName = user.displayName || 'Bạn Nữ Xinh Đẹp';
+      const email = user.email || 'special.guest@2010.vn';
+      const fallbackAvatar = `https://ui-avatars.com/api/?name=${encodeURIComponent(displayName)}&background=FCEEF2&color=882D42&bold=true&size=200`;
+      const photoURL = user.photoURL || fallbackAvatar;
+
+      const ticketData = getOrCreateTicketData({ displayName, email });
+
+      // Chuyển sang màn hình đang in
+      screenCheckin.classList.add('hidden');
+      screenTicket.classList.add('hidden');
+      screenPrinting.classList.remove('hidden');
+
+      const paper = document.getElementById('printing-paper');
+      paper.classList.remove('animate-ticket-print');
+      void paper.offsetWidth; // Reflow
+      paper.classList.add('animate-ticket-print');
+
+      const statusText = document.getElementById('printing-status-text');
+      const progressBar = document.getElementById('printing-progress');
+      progressBar.style.width = '15%';
+      statusText.textContent = `Đang quét tần số của ${displayName}...`;
+      playBeep(520, 0.07);
+
+      setTimeout(() => {
+        progressBar.style.width = '55%';
+        statusText.textContent = `Đang chọn loài hoa & lời chúc định mệnh...`;
+        playBeep(640, 0.07);
+      }, 850);
+
+      setTimeout(() => {
+        progressBar.style.width = '95%';
+        statusText.textContent = `Đang đóng dấu sáp Hạnh Phúc 20/10...`;
+        playBeep(760, 0.08);
+      }, 1700);
+
+      setTimeout(() => {
+        // Gắn dữ liệu vào tấm vé
+        const avatarImg = document.getElementById('ticket-avatar');
+        avatarImg.onerror = () => { avatarImg.src = fallbackAvatar; };
+        avatarImg.src = photoURL;
+
+        document.getElementById('ticket-name').textContent = displayName;
+        document.getElementById('ticket-email').textContent = email;
+        document.getElementById('ticket-code').textContent = ticketData.code;
+        document.getElementById('ticket-title').textContent = ticketData.title;
+        document.getElementById('ticket-flower').textContent = ticketData.flower;
+        document.getElementById('ticket-aura').textContent = ticketData.aura;
+        document.getElementById('ticket-wish').textContent = ticketData.wish;
+        document.getElementById('ticket-time').textContent = ticketData.timestamp;
+
+        // Mở màn hình vé
+        screenPrinting.classList.add('hidden');
+        screenTicket.classList.remove('hidden');
+        playSuccessChime();
+        fireCelebrationConfetti();
+      }, 2550);
+    }
+
+    // =========================================================================
+    // XỬ LÝ SỰ KIỆN ĐĂNG NHẬP GOOGLE & DEMO
+    // =========================================================================
+    const errorBox = document.getElementById('error-message');
+
+    function showError(msg) {
+      errorBox.innerHTML = msg;
+      errorBox.classList.remove('hidden');
+    }
+
+    document.getElementById('btn-google-login').addEventListener('click', async () => {
+      errorBox.classList.add('hidden');
+      playBeep(700, 0.05);
+
+      if (window.location.protocol === 'file:') {
+        showError('⚠️ <b>Lưu ý:</b> Bạn đang mở file trực tiếp từ ổ cứng (<code>file://</code>). Google yêu cầu chạy trên <b>Live Server</b> hoặc đưa lên <b>Netlify / Vercel</b> để mở cửa sổ đăng nhập. Bạn có thể bấm nút <b>Demo</b> bên dưới để test ngay nhé!');
+        return;
+      }
+
+      if (!isFirebaseConfigured || !auth) {
+        showError('⚠️ Bạn chưa dán <code>firebaseConfig</code> vào trong file <code>index.html</code>. Hãy dán cấu hình Firebase của bạn hoặc bấm nút <b>Xem thử hiệu ứng in vé (Demo)</b> ở bên dưới nhé!');
+        return;
+      }
+
+      try {
+        const result = await signInWithPopup(auth, provider);
+        if (result && result.user) {
+          startPrintingFlow(result.user);
+        }
+      } catch (error) {
+        console.error("Google Sign-In Error:", error);
+        if (error.code === 'auth/unauthorized-domain') {
+          showError(`⚠️ Tên miền <b>${window.location.hostname}</b> chưa được cấp quyền. Hãy vào <b>Firebase Console → Authentication → Settings → Authorized domains</b> và thêm tên miền này vào nhé!`);
+        } else if (error.code !== 'auth/popup-closed-by-user') {
+          showError(`⚠️ Không thể đăng nhập Google (${error.code}). Hãy thử mở bằng trình duyệt Chrome/Safari hoặc dùng chế độ Demo bên dưới.`);
+        }
+      }
+    });
+
+    // Chế độ Demo
+    const demoModal = document.getElementById('demo-modal');
+    document.getElementById('btn-open-demo').addEventListener('click', () => {
+      playBeep(650, 0.05);
+      demoModal.classList.remove('hidden');
+      demoModal.classList.add('flex');
+      document.getElementById('demo-name-input').focus();
+    });
+
+    document.getElementById('btn-cancel-demo').addEventListener('click', () => {
+      demoModal.classList.add('hidden');
+      demoModal.classList.remove('flex');
+    });
+
+    document.getElementById('btn-confirm-demo').addEventListener('click', () => {
+      const inputName = document.getElementById('demo-name-input').value.trim() || 'Bạn Nữ Xinh Đẹp';
+      demoModal.classList.add('hidden');
+      demoModal.classList.remove('flex');
+      startPrintingFlow({
+        displayName: inputName,
+        email: `${inputName.toLowerCase().replace(/\s+/g, '.')}@gmail.com`,
+        photoURL: ''
+      });
+    });
+
+    // Nút bắn thêm pháo hoa
+    document.getElementById('btn-confetti-again').addEventListener('click', () => {
+      playSuccessChime();
+      fireCelebrationConfetti();
+    });
+
+    // Nút đổi tài khoản khác
+    document.getElementById('btn-switch-account').addEventListener('click', async () => {
+      playBeep(500, 0.05);
+      if (auth) {
+        try { await signOut(auth); } catch (e) {}
+      }
+      screenTicket.classList.add('hidden');
+      screenCheckin.classList.remove('hidden');
+    });
+
+    // =========================================================================
+    // CHỤP ẢNH TẤM VÉ VỀ MÁY (HTML2CANVAS)
+    // =========================================================================
+    document.getElementById('btn-download-ticket').addEventListener('click', async () => {
+      const btn = document.getElementById('btn-download-ticket');
+      const originalText = btn.innerHTML;
+      btn.innerHTML = '<span>⏳ Đang xuất ảnh vé HD...</span>';
+      btn.disabled = true;
+
+      const ticketEl = document.getElementById('interactive-ticket');
+      ticketEl.style.transform = 'none'; // Reset góc nghiêng 3D trước khi chụp
+
+      try {
+        const captureArea = document.getElementById('ticket-capture-area');
+        const canvas = await html2canvas(captureArea, {
+          scale: 2.5,
+          useCORS: true,
+          backgroundColor: null
+        });
+        const link = document.createElement('a');
+        link.download = 'Ve-Hanh-Phuc-20-10.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+        playSuccessChime();
+      } catch (err) {
+        alert('Bạn có thể chụp màn hình trực tiếp để lưu tấm vé nhanh nhất nhé!');
+      } finally {
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+      }
+    });
+
+    // =========================================================================
+    // HIỆU ỨNG NGHIÊNG 3D TẤM VÉ KHI DI CHUỘT (3D TILT EFFECT)
+    // =========================================================================
+    const interactiveTicket = document.getElementById('interactive-ticket');
+    interactiveTicket.addEventListener('mousemove', (e) => {
+      const rect = interactiveTicket.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const rotateY = ((x / rect.width) - 0.5) * 8;
+      const rotateX = ((0.5 - (y / rect.height)) * 8);
+      interactiveTicket.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+    interactiveTicket.addEventListener('mouseleave', () => {
+      interactiveTicket.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg)';
+    });
+  </script>
+</body>
+</html>
