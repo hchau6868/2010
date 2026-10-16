@@ -1,14 +1,14 @@
-<!DOCTYPE html>
+https://2010-sandy.vercel.app/<!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Trạm Phát Hạnh Phúc 20/10 🌸</title>
 
-  <!-- Google Fonts (Đầy đủ tiếng Việt & Chữ ký nghệ thuật) -->
+  <!-- Google Fonts Mới: Quicksand (Tròn trịa, hiện đại) + Cormorant Garamond (Sang trọng) + Lora (Thư tay) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Dancing+Script:wght@600;700&family=Lora:ital,wght@0,500;1,400;1,500&family=Quicksand:wght@500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -17,8 +17,9 @@
       theme: {
         extend: {
           fontFamily: {
-            sans: ['"Be Vietnam Pro"', 'sans-serif'],
-            serif: ['"Playfair Display"', 'serif'],
+            sans: ['"Quicksand"', 'sans-serif'],
+            serif: ['"Cormorant Garamond"', 'serif'],
+            wish: ['"Lora"', 'serif'],
             mono: ['"Space Mono"', 'monospace'],
             script: ['"Dancing Script"', 'cursive'],
           },
@@ -156,14 +157,6 @@
       transform-style: preserve-3d;
     }
 
-    /* Họa tiết răng cưa đầu tấm vé */
-    .ticket-top-edge {
-      background-image: radial-gradient(circle at 10px -2px, transparent 8px, #FFFDFB 9px);
-      background-size: 20px 14px;
-      height: 10px;
-      width: 100%;
-    }
-
     .ticket-divider {
       position: relative;
       border-top: 2px dashed #E5B0C0;
@@ -221,13 +214,13 @@
 
   <!-- Thanh trạng thái nổi phía trên -->
   <header class="w-full max-w-md z-20 flex items-center justify-between mb-3 px-1">
-    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/70 backdrop-blur-md border border-pink-200/80 shadow-sm text-[11px] font-medium text-deepRose">
+    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/70 backdrop-blur-md border border-pink-200/80 shadow-sm text-[11px] font-semibold text-deepRose">
       <span class="w-2 h-2 rounded-full bg-rose-500 animate-ping"></span>
       <span>Trạm 20/10 Đang Hoạt Động</span>
     </div>
     <button id="btn-sound-toggle" title="Bật/Tắt âm thanh hiệu ứng" class="px-3 py-1.5 rounded-full bg-white/70 backdrop-blur-md border border-pink-200/80 shadow-sm text-xs text-deepRose hover:bg-white transition flex items-center gap-1.5">
       <span id="sound-icon">🔊</span>
-      <span class="text-[11px] font-medium">Âm thanh</span>
+      <span class="text-[11px] font-semibold">Âm thanh</span>
     </button>
   </header>
 
@@ -237,7 +230,7 @@
       <div class="w-14 h-14 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center mx-auto mb-3 text-2xl">
         🌸
       </div>
-      <h3 class="font-serif text-xl font-bold text-deepRose mb-2">Mở bằng Trình duyệt để nhận vé nhé!</h3>
+      <h3 class="font-serif text-2xl font-bold text-deepRose mb-2">Mở bằng Trình duyệt để nhận vé nhé!</h3>
       <p class="text-xs sm:text-sm text-stone-600 leading-relaxed mb-4">
         Bạn đang mở link trong ứng dụng <b>Zalo / Messenger</b>. Google sẽ hạn chế đăng nhập trong trình duyệt ẩn này.
       </p>
@@ -245,7 +238,7 @@
         <p>👉 <b>Bước 1:</b> Nhấn vào biểu tượng <b>3 chấm (•••)</b> ở góc trên/dưới màn hình.</p>
         <p>👉 <b>Bước 2:</b> Chọn <b>"Mở bằng trình duyệt"</b> (Safari hoặc Chrome).</p>
       </div>
-      <button id="btn-close-inapp" class="w-full py-3 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-600 text-xs font-semibold transition">
+      <button id="btn-close-inapp" class="w-full py-3 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-600 text-xs font-bold transition">
         Tôi vẫn muốn thử tiếp tục tại đây
       </button>
     </div>
@@ -255,15 +248,15 @@
   <div id="demo-modal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden items-center justify-center p-4">
     <div class="bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl border border-pink-100 animate-fade-up">
       <div class="flex items-center justify-between mb-2">
-        <h3 class="font-serif text-xl font-bold text-deepRose">Chế độ In Vé Thử</h3>
-        <span class="text-xs bg-pink-100 text-deepRose px-2.5 py-0.5 rounded-full font-semibold">Demo</span>
+        <h3 class="font-serif text-2xl font-bold text-deepRose">Chế độ In Vé Thử</h3>
+        <span class="text-xs bg-pink-100 text-deepRose px-2.5 py-0.5 rounded-full font-bold">Demo</span>
       </div>
       <p class="text-xs text-stone-500 mb-4">Nhập tên của bạn để xem máy in vé 20/10 hoạt động như thế nào nhé:</p>
       <input id="demo-name-input" type="text" placeholder="Nhập tên của bạn..." value="Bạn Nữ Xinh Đẹp"
-        class="w-full px-4 py-3 rounded-xl border border-pink-200 focus:outline-none focus:ring-2 focus:ring-pink-400 text-sm mb-4 font-medium text-stone-800" />
+        class="w-full px-4 py-3 rounded-xl border border-pink-200 focus:outline-none focus:ring-2 focus:ring-pink-400 text-sm mb-4 font-semibold text-stone-800" />
       <div class="flex gap-2.5">
-        <button id="btn-cancel-demo" class="flex-1 py-2.5 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-600 text-xs font-semibold transition">Đóng</button>
-        <button id="btn-confirm-demo" class="flex-1 py-2.5 rounded-xl bg-gradient-to-r from-[#d46a7e] to-[#b0485d] text-white text-xs font-semibold shadow-md hover:opacity-95 transition">✨ In Vé Ngay</button>
+        <button id="btn-cancel-demo" class="flex-1 py-2.5 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-600 text-xs font-bold transition">Đóng</button>
+        <button id="btn-confirm-demo" class="flex-1 py-2.5 rounded-xl bg-gradient-to-r from-[#d46a7e] to-[#b0485d] text-white text-xs font-bold shadow-md hover:opacity-95 transition">✨ In Vé Ngay</button>
       </div>
     </div>
   </div>
@@ -279,15 +272,15 @@
       <div class="absolute -top-10 -right-10 w-28 h-28 bg-gradient-to-br from-pink-200/40 to-rose-300/20 rounded-full blur-xl pointer-events-none"></div>
 
       <!-- Decor top badge -->
-      <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-gradient-to-r from-pink-100 to-rose-100 border border-pink-200/80 text-deepRose text-[11px] font-bold tracking-wider mb-4 shadow-sm">
+      <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-gradient-to-r from-pink-100 to-rose-100 border border-pink-200/80 text-deepRose text-[11px] font-bold tracking-wider mb-3 shadow-sm">
         <span>✨ SPECIAL EDITION • 20.10 ✨</span>
       </div>
 
-      <h1 class="font-serif text-3xl sm:text-4xl font-bold text-deepRose leading-tight mb-2">
+      <h1 class="font-serif text-4xl sm:text-5xl font-bold text-deepRose leading-tight mb-2 tracking-wide">
         Trạm Phát<br/>Hạnh Phúc
       </h1>
-      <p class="text-xs sm:text-sm text-stone-500 max-w-xs mx-auto mb-6 leading-relaxed">
-      Chạm để in tấm vé kỷ niệm 20/10 mang tên bạn!
+      <p class="text-xs sm:text-sm text-stone-500 max-w-xs mx-auto mb-6 leading-relaxed font-medium">
+        Chạm để in tấm vé kỷ niệm 20/10 mang tên bạn!
       </p>
 
       <!-- Mô hình Máy In Vé Tương Tác -->
@@ -321,7 +314,7 @@
       </div>
 
       <!-- Nút bấm chính: Đăng nhập Google -->
-      <button id="btn-google-login" class="btn-shimmer w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-[#d46a7e] via-[#c85a70] to-[#a83e53] hover:opacity-95 active:scale-[0.98] text-white font-semibold text-sm sm:text-base shadow-[0_12px_28px_rgba(200,90,112,0.38)] transition-all flex items-center justify-center gap-3 group">
+      <button id="btn-google-login" class="btn-shimmer w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-[#d46a7e] via-[#c85a70] to-[#a83e53] hover:opacity-95 active:scale-[0.98] text-white font-bold text-sm sm:text-base shadow-[0_12px_28px_rgba(200,90,112,0.38)] transition-all flex items-center justify-center gap-3 group">
         <div class="bg-white p-1.5 rounded-full shadow-sm group-hover:rotate-12 transition-transform">
           <svg class="w-4 h-4" viewBox="0 0 24 24">
             <path fill="#EA4335" d="M12 5c1.6 0 3 .6 4.1 1.7l3.1-3.1C17.3 1.8 14.8 1 12 1 7.4 1 3.5 3.6 1.6 7.4l3.7 2.8C6.2 7.2 8.9 5 12 5z"/>
@@ -338,7 +331,7 @@
 
       <!-- Nút chạy thử Demo Mode -->
       <div class="mt-5 pt-4 border-t border-pink-100/80 flex items-center justify-center">
-        <button id="btn-open-demo" class="text-xs text-stone-400 hover:text-deepRose underline underline-offset-4 transition">
+        <button id="btn-open-demo" class="text-xs text-stone-400 hover:text-deepRose underline underline-offset-4 transition font-medium">
           Chưa gắn Firebase? Bấm xem thử hiệu ứng in vé (Demo)
         </button>
       </div>
@@ -353,10 +346,10 @@
         <span>PRINTING IN PROGRESS...</span>
       </div>
 
-      <h2 id="printing-status-text" class="font-serif text-xl sm:text-2xl font-bold text-deepRose mb-2">
+      <h2 id="printing-status-text" class="font-serif text-2xl sm:text-3xl font-bold text-deepRose mb-2">
         Đang trích xuất tần số dịu dàng...
       </h2>
-      <p id="printing-subtext" class="text-xs text-stone-500 mb-5">
+      <p id="printing-subtext" class="text-xs text-stone-500 mb-5 font-medium">
         Vui lòng đợi trong giây lát để máy đóng dấu sáp 20/10
       </p>
 
@@ -402,7 +395,7 @@
               <p class="text-[10px] font-mono uppercase tracking-widest text-roseGold font-bold">
                 🌸 VIETNAMESE WOMEN'S DAY
               </p>
-              <p class="text-xs font-serif font-bold text-deepRose">
+              <p class="text-sm font-serif font-bold text-deepRose tracking-wide">
                 Vé Đặc Quyền Hạnh Phúc • 20/10
               </p>
             </div>
@@ -413,7 +406,7 @@
             </div>
           </div>
 
-          <!-- BODY VÉ: AVATAR & TÊN NGƯỜI NHẬN -->
+          <!-- BODY VÉ: AVATAR & TÊN NGƯỜI NHẬN (ĐÃ XÓA DÒNG GMAIL) -->
           <div class="flex flex-col items-center text-center mb-4 relative">
             <div class="relative mb-3">
               <!-- Vòng tròn viền kép Rose Gold -->
@@ -427,15 +420,12 @@
               </span>
             </div>
 
-            <p class="text-[11px] uppercase tracking-widest text-stone-400 font-semibold mb-0.5">
+            <p class="text-[11px] uppercase tracking-[0.2em] text-stone-400 font-bold mb-0.5">
               Hành khách đặc biệt
             </p>
-            <h2 id="ticket-name" class="font-serif text-2xl sm:text-3xl font-bold text-deepRose leading-snug px-2">
+            <h2 id="ticket-name" class="font-serif text-3xl sm:text-4xl font-bold text-deepRose leading-tight px-2 tracking-wide">
               Nguyễn Hà Châu
             </h2>
-            <p id="ticket-email" class="text-[11px] font-mono text-stone-400 mt-0.5">
-              hachau@gmail.com
-            </p>
 
             <!-- Danh hiệu 20/10 (Badge) -->
             <div class="mt-3 inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-gradient-to-r from-[#882D42] to-[#B76E79] text-white text-xs font-semibold shadow-sm">
@@ -447,24 +437,24 @@
           <!-- BẢNG CHỈ SỐ ĐẶC QUYỀN 20/10 -->
           <div class="grid grid-cols-2 gap-2.5 my-4">
             <div class="bg-pink-50/70 border border-pink-100 rounded-xl p-2.5 text-center">
-              <p class="text-[10px] text-stone-400 uppercase font-semibold">Loài hoa đại diện</p>
+              <p class="text-[10px] text-stone-400 uppercase font-bold tracking-wider">Loài hoa đại diện</p>
               <p id="ticket-flower" class="text-xs font-bold text-deepRose mt-0.5">🌷 Hoa Tulip Hồng</p>
             </div>
             <div class="bg-pink-50/70 border border-pink-100 rounded-xl p-2.5 text-center">
-              <p class="text-[10px] text-stone-400 uppercase font-semibold">Chỉ số rạng rỡ</p>
+              <p class="text-[10px] text-stone-400 uppercase font-bold tracking-wider">Chỉ số rạng rỡ</p>
               <p id="ticket-aura" class="text-xs font-bold text-deepRose mt-0.5">1000% Tỏa Sáng ✨</p>
             </div>
           </div>
 
-          <!-- HỘP LỜI CHÚC Ý NGHĨA -->
+          <!-- HỘP LỜI CHÚC Ý NGHĨA (FONT LORA MỀM MẠI & SÂU SẮC) -->
           <div class="bg-gradient-to-br from-[#FFF9FB] to-[#FCEEF2]/70 border border-pink-200/80 rounded-2xl p-4 sm:p-5 relative my-2 shadow-inner">
-            <span class="font-serif text-4xl text-pink-300/70 absolute top-1 left-3 leading-none select-none">“</span>
-            <p id="ticket-wish" class="text-xs sm:text-sm text-stone-700 leading-relaxed text-center relative z-10 pt-2 pb-1 italic">
+            <span class="font-serif text-5xl text-pink-300/60 absolute top-0 left-3 leading-none select-none">“</span>
+            <p id="ticket-wish" class="font-wish text-[13px] sm:text-[14px] text-stone-700 leading-[1.75] text-center relative z-10 pt-3 pb-1.5 italic">
               Lời chúc 20/10 sẽ hiển thị tại đây...
             </p>
-            <div class="mt-3 flex items-center justify-between pt-2 border-t border-pink-200/50">
-              <span class="text-[10px] font-mono text-roseGold">FROM: D26 AIoTers</span>
-              <span class="font-script text-base text-deepRose">Happy Women's Day ♡</span>
+            <div class="mt-3.5 flex items-center justify-between pt-2.5 border-t border-pink-200/50">
+              <span class="text-[10px] font-mono font-bold text-roseGold">FROM: D26 AIoTers</span>
+              <span class="font-script text-lg text-deepRose">Happy Women's Day ♡</span>
             </div>
           </div>
 
@@ -499,7 +489,7 @@
             <!-- Con dấu sáp đóng góc phải -->
             <div class="wax-seal w-14 h-14 rounded-full flex flex-col items-center justify-center text-white absolute -top-5 right-1 rotate-[-12deg] border-2 border-rose-200/40 select-none">
               <span class="text-[8px] font-mono tracking-tighter opacity-90">CERTIFIED</span>
-              <span class="font-serif text-xs font-bold leading-none my-0.5">20.10</span>
+              <span class="font-serif text-sm font-bold leading-none my-0.5">20.10</span>
               <span class="text-[7px] font-mono tracking-tighter opacity-90">LOVELY</span>
             </div>
           </div>
@@ -510,15 +500,15 @@
       <!-- CÁC NÚT TƯƠNG TÁC BÊN DƯỚI VÉ -->
       <div class="mt-4 space-y-2.5 px-1">
         <div class="flex gap-2.5">
-          <button id="btn-download-ticket" class="btn-shimmer flex-1 py-3.5 px-4 rounded-2xl bg-gradient-to-r from-[#d46a7e] to-[#a83e53] text-white font-semibold text-xs sm:text-sm shadow-lg hover:opacity-95 active:scale-[0.98] transition flex items-center justify-center gap-2">
+          <button id="btn-download-ticket" class="btn-shimmer flex-1 py-3.5 px-4 rounded-2xl bg-gradient-to-r from-[#d46a7e] to-[#a83e53] text-white font-bold text-xs sm:text-sm shadow-lg hover:opacity-95 active:scale-[0.98] transition flex items-center justify-center gap-2">
             <span>📸 Lưu Vé Về Máy (HD)</span>
           </button>
-          <button id="btn-confetti-again" title="Bắn pháo hoa" class="py-3.5 px-4 rounded-2xl bg-white border border-pink-200 text-deepRose font-semibold text-sm shadow-sm hover:bg-pink-50 active:scale-95 transition">
+          <button id="btn-confetti-again" title="Bắn pháo hoa" class="py-3.5 px-4 rounded-2xl bg-white border border-pink-200 text-deepRose font-bold text-sm shadow-sm hover:bg-pink-50 active:scale-95 transition">
             🎉
           </button>
         </div>
 
-        <button id="btn-switch-account" class="w-full py-3 rounded-2xl bg-white/80 hover:bg-white text-stone-600 font-medium text-xs border border-pink-100 shadow-sm transition flex items-center justify-center gap-1.5">
+        <button id="btn-switch-account" class="w-full py-3 rounded-2xl bg-white/80 hover:bg-white text-stone-600 font-semibold text-xs border border-pink-100 shadow-sm transition flex items-center justify-center gap-1.5">
           <span>🔄 Đổi tài khoản Google khác</span>
         </button>
       </div>
@@ -526,7 +516,7 @@
 
   </main>
 
-  <footer class="z-10 text-center text-[11px] text-stone-400 mt-4 pb-2">
+  <footer class="z-10 text-center text-[11px] text-stone-400 mt-4 pb-2 font-medium">
     Made with 💖 for Vietnamese Women's Day 20/10
   </footer>
 
@@ -538,17 +528,18 @@
     import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js";
 
     // =========================================================================
-    // 👉 BƯỚC QUAN TRỌNG: DÁN FIREBASE CONFIG CỦA BẠN VÀO ĐÂY
+    // CẤU HÌNH FIREBASE CỦA BẠN
     // =========================================================================
     const firebaseConfig = {
-  	apiKey: "AIzaSyCL-khNrlC-Zl1kKQzqUmzUt321rwARDbU",
-  	authDomain: "ptit-98cc2.firebaseapp.com",
-  	projectId: "ptit-98cc2",
-  	storageBucket: "ptit-98cc2.firebasestorage.app",
-  	messagingSenderId: "64152584793",
-  	appId: "1:64152584793:web:f433c816e260e89249e748",
-  	measurementId: "G-1S87HKCX1J"
-	};
+      apiKey: "AIzaSyCL-khNrlC-Zl1kKQzqUmzUt321rwARDbU",
+      authDomain: "ptit-98cc2.firebaseapp.com",
+      projectId: "ptit-98cc2",
+      storageBucket: "ptit-98cc2.firebasestorage.app",
+      messagingSenderId: "64152584793",
+      appId: "1:64152584793:web:f433c816e260e89249e748",
+      measurementId: "G-1S87HKCX1J"
+    };
+
     let auth = null;
     let provider = null;
     const isFirebaseConfigured = firebaseConfig.apiKey && !firebaseConfig.apiKey.includes("PASTE_YOUR");
@@ -565,80 +556,80 @@
     }
 
     // =========================================================================
-    // KHO 16 DANH HIỆU, LOÀI HOA & LỜI CHÚC 20/10 ĐA DẠNG
+    // KHO 12 DANH HIỆU, LOÀI HOA & LỜI CHÚC 20/10 SÂU SẮC, DÀI & Ý NGHĨA
     // =========================================================================
     const WISH_COLLECTION = [
       {
         title: "Nữ Hoàng Năng Lượng Tích Cực",
         flower: "🌻 Hoa Hướng Dương",
         aura: "1000% Rạng Rỡ ✨",
-        wish: "Chúc {name} một ngày 20/10 rực rỡ như ánh mặt trời! Cảm ơn bạn vì luôn mang đến nguồn năng lượng ấm áp, nụ cười tươi tắn và truyền cảm hứng tích cực cho mọi người xung quanh."
+        wish: "Gửi tới {name} một ngày 20/10 rực rỡ và ấm áp như ánh mặt trời! Cảm ơn bạn vì đã luôn xuất hiện với nụ cười tươi tắn, mang theo nguồn năng lượng tích cực sưởi ấm mọi người xung quanh. Chúc bạn trên chặng đường sắp tới luôn giữ vững ngọn lửa nhiệt huyết, học tập thật đỉnh, đạt được mọi mục tiêu đã đặt ra và mỗi ngày trôi qua đều ngập tràn tiếng cười hạnh phúc nhé!"
       },
       {
         title: "Nàng Thơ Dịu Dàng",
         flower: "🌷 Hoa Tulip Hồng",
         aura: "999% Ngọt Ngào 🌸",
-        wish: "Gửi tới {name} ngàn lời chúc dịu dàng nhất nhân ngày 20/10. Chúc bạn luôn giữ được tâm hồn trong trẻo, trái tim ấm áp và mỗi ngày trôi qua đều nhẹ nhàng như một bản nhạc thu."
+        wish: "Dành tặng {name} ngàn lời thương mến nhất nhân ngày Phụ nữ Việt Nam 20/10! Giữa nhịp sống vội vã và những bài vở bộn bề, sự dịu dàng và tinh tế của bạn giống như một làn gió thu mát lành. Chúc bạn luôn giữ được tâm hồn trong trẻo, đôi mắt biết cười, được vây quanh bởi những người chân thành và mỗi bước chân đi tới đâu cũng đều nở hoa rực rỡ."
       },
       {
         title: "Chiến Thần Vượt Mọi Deadline",
         flower: "🌹 Hoa Hồng Đỏ Kiêu Kỳ",
         aura: "Max Level Bản Lĩnh 🔥",
-        wish: "Chúc mừng 20/10, {name}! Dù công việc hay học tập có bận rộn đến đâu, chúc bạn luôn giữ vững bản lĩnh, làm chủ mọi mục tiêu và luôn dành thời gian yêu thương, chiều chuộng bản thân mình thật nhiều nhé."
+        wish: "Chúc mừng 20/10 nhé, cô gái bản lĩnh {name}! Dù những kỳ thi, đồ án hay công việc có đôi lúc thử thách đến đâu, bạn vẫn luôn tỏa sáng theo cách thật đáng ngưỡng mộ. Nhân ngày đặc biệt này, chúc bạn gặt hái thật nhiều điểm A+, mọi dự định đều suôn sẻ, và đừng quên dành thời gian nghỉ ngơi, yêu thương và tự thưởng cho bản thân những điều ngọt ngào nhất!"
       },
       {
         title: "Bảo Vật Của Vũ Trụ",
         flower: "🌸 Hoa Anh Đào",
         aura: "Độc Nhất Vô Nhị 💎",
-        wish: "Vũ trụ nhắn gửi tới {name} rằng: Bạn chính là phiên bản tuyệt vời và đáng trân quý nhất! Chúc bạn ngày 20/10 ngập tràn hoa, quà, những lời yêu thương và vạn điều như ý."
+        wish: "Vũ trụ hôm nay gửi tấm vé đặc biệt này tới {name} để nhắc rằng: Bạn chính là phiên bản tuyệt vời, duy nhất và đáng trân quý nhất! Chúc bạn ngày 20/10 nhận được thật nhiều hoa, quà và những lời chúc chân thành. Mong rằng không chỉ hôm nay mà cả 365 ngày trong năm, bạn đều sống trọn vẹn với đam mê, luôn được chở che, yêu chiều và tỏa sáng rực rỡ."
       },
       {
         title: "Đóa Hoa Kiêu Hãnh",
         flower: "🌺 Hoa Mẫu Đơn",
         aura: "Khí Chất Ngời Ngời 👑",
-        wish: "Chúc {name} ngày Phụ nữ Việt Nam 20/10 thật trọn vẹn! Hãy luôn tự tin, kiêu hãnh và tỏa hương theo cách riêng của mình. Mọi điều tốt đẹp và may mắn nhất đang chờ đón bạn phía trước."
+        wish: "Chúc {name} một ngày Phụ nữ Việt Nam 20/10 thật trọn vẹn và đáng nhớ! Bạn giống như một đóa hoa kiêu hãnh, vừa dịu dàng mềm mại nhưng cũng đầy mạnh mẽ và độc lập. Hãy luôn tự tin bước đi trên con đường mình đã chọn, bởi vẻ đẹp, trí tuệ và sự nỗ lực của bạn xứng đáng nhận lại những thành quả ngọt ngào và rực rỡ nhất ở phía trước."
       },
       {
         title: "Cô Gái Mang Nụ Cười Tỏa Nắng",
         flower: "🌼 Hoa Cúc Họa Mi",
         aura: "100% Đáng Yêu 💖",
-        wish: "Nụ cười của {name} chính là món quà đẹp nhất! Ngày 20/10 này, chúc bạn luôn giữ mãi nét duyên dáng, hồn nhiên và mỗi sáng thức dậy đều có thêm thật nhiều lý do để mỉm cười hạnh phúc."
+        wish: "Nụ cười của {name} chính là món quà dịu dàng nhất giữa những ngày thu tháng Mười! Nhân dịp 20/10, chúc bạn luôn giữ mãi nét duyên dáng, hồn nhiên và trái tim ấm áp ấy. Mong cho mọi muộn phiền hay áp lực đều dừng lại sau cánh cửa, để mỗi sáng thức dậy bạn đều có thêm thật nhiều lý do để mỉm cười, yêu đời và tận hưởng tuổi thanh xuân tươi đẹp nhất."
       },
       {
         title: "Nữ Chính Ngôn Tình Đời Thực",
         flower: "💐 Hoa Baby Trắng",
         aura: "Ngập Tràn Yêu Thương 💌",
-        wish: "Chúc {name} luôn là 'nữ chính' hạnh phúc nhất trong câu chuyện cuộc đời mình! Ngày 20/10 chúc bạn được bao bọc bởi sự dịu dàng, chở che và những điều lãng mạn ngọt ngào nhất."
+        wish: "Chúc {name} luôn là 'nữ chính' hạnh phúc và rạng ngời nhất trong cuốn phim thanh xuân của chính mình! Ngày 20/10 này, chúc bạn được bao bọc bởi sự dịu dàng, đi đến đâu cũng gặp điều may mắn, học tập hanh thông và luôn có những người bạn tuyệt vời đồng hành. Hãy luôn yêu bản thân thật nhiều và đón nhận mọi điều lãng mạn mà cuộc sống gửi tặng nhé!"
       },
       {
         title: "Ngôi Sao Sáng Tạo",
         flower: "🪻 Hoa Oải Hương (Lavender)",
         aura: "Tần Số Tinh Tế ✨",
-        wish: "Gửi ngàn lời chúc tốt đẹp đến {name} nhân ngày 20/10! Chúc bạn luôn bay bổng với những ước mơ lớn, gặt hái thật nhiều thành tựu rực rỡ và luôn tự hào về hành trình mình đang đi."
+        wish: "Gửi ngàn lời chúc tốt đẹp và rực rỡ nhất đến {name} nhân ngày 20/10! Cảm ơn bạn vì sự thông minh, sáng tạo và nguồn cảm hứng tuyệt vời mà bạn luôn mang tới cho tập thể. Chúc bạn luôn bay bổng với những ước mơ lớn, chinh phục mọi cột mốc mới tại giảng đường cũng như trong cuộc sống, và luôn tự hào về hành trình tuyệt vời mà mình đang đi."
       },
       {
         title: "Đại Sứ Hạnh Phúc",
         flower: "🪷 Hoa Sen Thanh Khiết",
         aura: "Bình Yên & Tỏa Sáng 🌿",
-        wish: "Chúc {name} một ngày 20/10 thật bình yên, ấm áp bên những người thân yêu. Mong bạn luôn mạnh khỏe, tâm an nhiên và đi đến đâu cũng gieo mầm niềm vui đến đó."
+        wish: "Chúc {name} một ngày 20/10 thật bình yên, ấm áp và ngập tràn niềm vui bên gia đình, bạn bè! Giữa bao nhiêu bận rộn của tuổi trẻ, chúc bạn luôn giữ được sự cân bằng, sức khỏe dồi dào, tâm hồn an nhiên và nụ cười rạng rỡ. Mong rằng mọi ước nguyện thầm kín của bạn trong năm nay đều sẽ sớm nở hoa và trở thành hiện thực."
       },
       {
         title: "Quý Cô Thanh Lịch",
         flower: "💮 Hoa Trà Trắng (Camellia)",
         aura: "Sang Trọng & Cuốn Hút ✨",
-        wish: "Nhân ngày 20/10, chúc {name} ngày càng thăng hạng nhan sắc, vẹn tròn niềm vui và luôn giữ được phong thái tự tin, cuốn hút khiến ai gặp một lần cũng nhớ mãi!"
+        wish: "Nhân ngày tôn vinh phái đẹp 20/10, chúc {name} ngày càng thăng hạng nhan sắc, vẹn tròn niềm vui và luôn giữ được phong thái tự tin, cuốn hút riêng biệt! Mong rằng trên hành trình từ giảng đường đến tương lai, bạn sẽ luôn gặp được những cơ hội lớn, gặt hái thành công rực rỡ và luôn là niềm tự hào của những người yêu thương bạn."
       },
       {
         title: "Nàng Tiên May Mắn",
         flower: "🍀 Hoa Cát Tường",
         aura: "Vạn Sự Như Ý 🌈",
-        wish: "Tấm vé này mang theo 1000% may mắn gửi tới {name} trong ngày 20/10! Chúc mọi dự định sắp tới của bạn đều thuận buồm xuôi gió, tình cảm viên mãn và luôn rạng ngời hạnh phúc."
+        wish: "Tấm vé đặc quyền này mang theo 1000% may mắn và ngọt ngào gửi riêng tới {name} trong ngày 20/10! Chúc mọi kế hoạch học tập, công việc và ước mơ sắp tới của bạn đều thuận buồm xuôi gió. Hãy luôn tin vào giá trị của bản thân, sống hết mình với tuổi trẻ và sẵn sàng đón nhận vô vàn điều kỳ diệu đang chờ đón bạn ở phía trước nhé!"
       },
       {
         title: "Trái Tim Ấm Áp",
         flower: "🌺 Hoa Cẩm Tú Cầu",
         aura: "Dịu Dàng & Sâu Sắc 💕",
-        wish: "Cảm ơn {name} vì sự tinh tế và ấm áp mà bạn luôn dành cho thế giới này. Chúc bạn ngày 20/10 nhận lại gấp trăm lần sự yêu thương, trân trọng và những bất ngờ ngọt ngào nhất!"
+        wish: "Cảm ơn {name} vì sự chân thành, tinh tế và ấm áp mà bạn luôn dành cho mọi người xung quanh. Ngày Phụ nữ Việt Nam 20/10 này, chúc bạn nhận lại gấp trăm lần sự yêu thương, trân trọng và những bất ngờ ngọt ngào nhất! Mong bạn luôn mỉm cười thật tươi, giữ vững niềm tin và có một thanh xuân thật rực rỡ, đáng nhớ bên những người bạn đồng hành."
       }
     ];
 
@@ -739,7 +730,7 @@
 
     function getOrCreateTicketData(user) {
       const emailKey = (user.email || user.displayName || 'guest').toLowerCase().trim();
-      const storageKey = `ticket_2010_v2_${emailKey}`;
+      const storageKey = `ticket_2010_v3_${emailKey}`;
       const saved = localStorage.getItem(storageKey);
 
       if (saved) {
@@ -820,13 +811,12 @@
       }, 1700);
 
       setTimeout(() => {
-        // Gắn dữ liệu vào tấm vé
+        // Gắn dữ liệu vào tấm vé (Không hiển thị email)
         const avatarImg = document.getElementById('ticket-avatar');
         avatarImg.onerror = () => { avatarImg.src = fallbackAvatar; };
         avatarImg.src = photoURL;
 
         document.getElementById('ticket-name').textContent = displayName;
-        document.getElementById('ticket-email').textContent = email;
         document.getElementById('ticket-code').textContent = ticketData.code;
         document.getElementById('ticket-title').textContent = ticketData.title;
         document.getElementById('ticket-flower').textContent = ticketData.flower;
